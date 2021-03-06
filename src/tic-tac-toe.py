@@ -1,104 +1,73 @@
-entrada = input("Enter cells: ")
+entrada = input("Enter cells: ").replace("_", " ")
 print("---------")
 print("| " + entrada[0] + " " + entrada[1] + " " + entrada[2] + " |")
 print("| " + entrada[3] + " " + entrada[4] + " " + entrada[5] + " |")
 print("| " + entrada[6] + " " + entrada[7] + " " + entrada[8] + " |")
 print("---------")
 
-# separando a entrada em uma lista com 3 listas para avaliar o jogo
+# definindo uma funcao auxiliar para verificar jogadas
+def verifica(x):
+    acumulador = 0
+    for i in x:
+        if i == "XXX":
+            resultado = "X wins"
+            acumulador += 1
+        elif i == "OOO":
+            resultado = "O wins"
+            acumulador += 1
+    if acumulador > 1:
+        print("Impossible")
+        quit()
+    elif acumulador == 1:
+        print(resultado)
+        quit()
+
+# separando a entrada em uma matriz 3x3 para avaliar o jogo
 linhas = []
 for i in range(0, 10, 3):
     if i != 0:
         start = i - 3
         linhas.append(list(entrada[start : i]))
 
-# separando a lista em linhas
-y = []
+# separando a a matriz por linhas
+line = []
 for i in range(3):
-    line = ' '
+    x = ' '
     for j in range(3):
-        line += linhas[i][j]
-        # colunas.append(linhas[i][j])
-    y.append(line.lstrip())
+        x += linhas[i][j]
+    line.append(x.lstrip())
 
-
-# verificando as entradas das linhas
-acumulador = 0
-for i in y:
-    if i == "XXX":
-        resultado = "X wins"
-        acumulador += 1
-    elif i == "OOO":
-        resultado = "O wins"
-        acumulador += 1
-if acumulador > 1:
-    print("Impossible")
-    quit()
-elif acumulador == 1:
-    print(resultado)
-    quit()
-
-
-# separando a lista por colunas
-x = []
+# separando a matriz por colunas
+column = []
 for j in range(3):
-    colunas = ' '
+    y = ' '
     for i in range(3):
-        colunas += linhas[i][j]
-        # colunas.append(linhas[i][j])
-    x.append(colunas.lstrip())
+        y += linhas[i][j]
+    column.append(y.lstrip())
 
-# verificando as entradas da colunas
-acumulador2 = 0
-for i in x:
-    if i == "XXX":
-        resultado = "X wins"
-        acumulador2 += 1
-    elif i == "OOO":
-        resultado = "O wins"
-        acumulador2 += 1
-if acumulador2 > 1:
-    print("Impossible")
-    quit()
-elif acumulador2 == 1:
-    print(resultado)
-    quit()
-
-#separando a lista em diagonais
-z = []
-diagonal1 = ' '
+# separando a lista em diagonais
+diagonal1 = []
+diagonal = ' '
 for i in range(3):
-    diagonal1 += linhas[i][i]
-z.append(diagonal1.lstrip())
+    diagonal += linhas[i][i]
+diagonal1.append(diagonal.lstrip())
+diagonal2 = []
+diagonals = linhas[0][2] + linhas[1][1] + linhas[2][0]
+diagonal2.append(diagonals)
 
-diagonal2 = linhas[0][2] + linhas[1][1] + linhas[2][0]
-z.append(diagonal2)
-
-
-# verificando as entradas das  diagonais
-acumulador3 = 0
-for i in range(2):
-    if z[i] == "XXX":
-        resultado = "X wins"
-        acumulador3 += 1
-        print("testando")
-    elif z[i] == "OOO":
-        resultado = "O wins"
-        acumulador3 += 1
-if acumulador3 > 1:
-    print("Impossible")
-    quit()
-elif acumulador3 == 1:
-    print(resultado)
-    quit()
+# funcao verifica coluna e linha, diagonal1 e diagonal2
+verifica(line)
+verifica(column)
+verifica(diagonal1)
+verifica(diagonal2)
 
 # Testando se o jogo não terminou
 count = 0
-xis= 0
+xis = 0
 zero = 0
 for i in range(3):
     for j in range(3):
-        if linhas[i][j] == '_':
+        if linhas[i][j] == ' ':
             count += 1
         elif linhas[i][j] == 'X':
             xis += 1
