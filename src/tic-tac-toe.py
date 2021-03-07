@@ -5,6 +5,48 @@ print("| " + entrada[3] + " " + entrada[4] + " " + entrada[5] + " |")
 print("| " + entrada[6] + " " + entrada[7] + " " + entrada[8] + " |")
 print("---------")
 
+# Quarta parte do projeto
+while True:
+    row, col = input("Enter the cordinates: ").split()
+    try:
+        row = int(row)
+        col = int(col)
+    except:
+        print("You should enter numbers!")
+        continue
+    x = row -1
+    y = col -1
+    if (row < 1 or row > 3) or ( col < 1 or col > 3):
+        print("Coordinates should be from 1 to 3!")
+        continue
+    # Transformando a entrada em uma matriz
+    matriz = list()
+    for i in range(0, 10, 3):
+        if i != 0:
+            start = i - 3
+            matriz.append(list(entrada[start : i]))
+    # Testando se a celula esta ocupada
+    if matriz[x][y] != " ":
+            print("This cell is occupied! Choose another one!")
+            continue
+    break
+
+# Atualizando a entrada do jogador1
+matriz[x][y] = "X"
+entrada = ""
+for w in matriz:
+    for z in w:
+        entrada += z
+
+print("---------")
+print("| " + entrada[0] + " " + entrada[1] + " " + entrada[2] + " |")
+print("| " + entrada[3] + " " + entrada[4] + " " + entrada[5] + " |")
+print("| " + entrada[6] + " " + entrada[7] + " " + entrada[8] + " |")
+print("---------")
+
+
+# !--FIM QUARTA PARTE
+'''
 # definindo uma funcao auxiliar para verificar jogadas
 def verifica(x):
     acumulador = 0
@@ -81,3 +123,4 @@ elif abs( xis - zero) >= 2:
     print("Impossible")
 elif abs( xis - zero) == 0 or abs( xis - zero) == 1:
     print("Game not finished")
+'''
