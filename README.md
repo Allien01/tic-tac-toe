@@ -1,5 +1,5 @@
-## Tic Tac Toe
-This is a simple implementation of the famous Tic Tac Toe's Game using Python
+## Tic Tac Toe :coffee:
+This is a simple implementation of the popular Tic Tac Toe game using Python
 
 ## How it works
 The grid contains 9 spaces to receive an input. The game grid must receive coordinates according to the following values:
