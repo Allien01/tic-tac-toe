@@ -48,7 +48,7 @@ while True:
     else:
         entrada[x][y] = "O"
 
-    #imprimindo a matriz com a nova entrada
+    # imprimindo a matriz com a nova entrada
     print("---------")
     print("| " + entrada[0][0] + " " + entrada[0][1] + " " + entrada[0][2] + " |")
     print("| " + entrada[1][0] + " " + entrada[1][1] + " " + entrada[1][2] + " |")
@@ -73,13 +73,12 @@ while True:
 
     # separando a lista em diagonais
     diagonal1 = []
-    diagonal = ' '
-    for i in range(3):
-        diagonal += entrada[i][i]
-    diagonal1.append(diagonal.lstrip())
+    diagonal = entrada[0][0] + entrada[1][1] + entrada[2][2]
+    diagonal1.append(diagonal)
     diagonal2 = []
     diagonals = entrada[0][2] + entrada[1][1] + entrada[2][0]
     diagonal2.append(diagonals)
+
 
     # funcao verifica coluna e linha, diagonal1 e diagonal2
     verifica(line)
