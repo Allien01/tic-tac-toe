@@ -76,8 +76,8 @@ while True:
     diagonal = entrada[0][0] + entrada[1][1] + entrada[2][2]
     diagonal1.append(diagonal)
     diagonal2 = []
-    diagonals = entrada[0][2] + entrada[1][1] + entrada[2][0]
-    diagonal2.append(diagonals)
+    diagonal = entrada[0][2] + entrada[1][1] + entrada[2][0]
+    diagonal2.append(diagonal)
 
 
     # funcao verifica coluna e linha, diagonal1 e diagonal2
